@@ -1,0 +1,38 @@
+program decl_variaveis;
+  var x, y, z: integer;
+      a,b,c:boolean;
+
+  // Proc Simples
+  procedure p(c: integer);
+    var a, b: integer;
+  begin
+    a := 2 * x;
+    b := a + 1;
+    y := b + y;
+  end;
+
+  // Func Simples
+  function soma(a: integer; b: integer): integer;
+  begin
+    soma := a + b;
+  end;
+begin
+  if a <= b then
+    write(x + y)
+  else
+    write(x * y);
+  y := 8 + 10 div 2;
+  z := (1+2)*3 - 4/2;
+  a := (a < b+c) or (b < a + c) and a = c;
+  write(a, b);
+  p(a, b, c, 8);
+  while (i <= n) do  
+  begin
+    x := y + z;
+    z := i + 1;
+  end;
+  write(x * y);
+  x := soma(5, 10);
+  //last
+  b := true;
+end.

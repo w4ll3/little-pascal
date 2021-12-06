@@ -1,0 +1,10 @@
+lex.yy.c
+pascal
+pascal.c
+pascal.dSYM
+pascal.tab.c
+pascal.tab.h
+*.swp
+src/*.o
+src/parser.cpp
+src/parser.hpp
