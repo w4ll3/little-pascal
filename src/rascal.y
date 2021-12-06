@@ -233,7 +233,7 @@ proc_stmt :
                                                   new ast::Identifier($1), $3
                                                 );
                                           }
-  /* | READ  LEFTP name_list RIGHTP          { std::vector<ast::Expression*> params;
+  | READ  LEFTP name_list RIGHTP          { std::vector<ast::Expression*> params;
                                             for (auto e: *($3)) {
                                               params.push_back(new ast::Attr(e));
                                             }
@@ -241,9 +241,8 @@ proc_stmt :
                                                   new ast::Identifier($1),
                                                   &params
                                                 );
-                                          } */
+                                          }
 
-// TODO: if_stmt may contains a shift/reduce conflict
 if_stmt : 
   IF expression THEN stmt else_clause     { $$ = (ast::Statement*)
                                                       new ast::IfStmt($2,$4,$5);

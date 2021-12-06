@@ -1,3 +1,8 @@
+/*
+ * Programa contendo a definição e chamada de um procedimento ou função
+ * recursiva com passagem de ao menos um parâmetro.
+ */
+
 program funcaoRecursiva;
 
   function f(n: integer): integer;

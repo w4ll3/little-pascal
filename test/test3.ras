@@ -1,3 +1,8 @@
+/*
+ * Programa contendo a definição e chamada de uma função com passagem de ao
+ * menos um parâmetro.
+ */
+
 program funcaoSimples;
   var x, y, z: integer;
 

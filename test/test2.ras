@@ -1,3 +1,8 @@
+/*
+ * Programa contendo a definição e chamada de um procedimento com passagem
+ * de ao menos um parâmetro.
+ */
+
 program procSimples;
 
   var x, y: integer;

@@ -36,4 +36,5 @@ begin
   p(a);
   //last
   b := true;
+  read(x);
 end.
