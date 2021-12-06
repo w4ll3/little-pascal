@@ -1,7 +1,7 @@
 SRC_DIR = src
 
 all: compiler
-	 make ll progDecVars.ras
+	 make ll cmdAtrib.ras
 
 # Build the pascal compiler using the subdir makefile
 compiler:

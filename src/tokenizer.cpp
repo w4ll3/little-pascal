@@ -552,8 +552,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "pascal.l"
-#line 3 "pascal.l"
+#line 1 "rascal.l"
+#line 3 "rascal.l"
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -796,7 +796,7 @@ YY_DECL
 		}
 
 	{
-#line 32 "pascal.l"
+#line 32 "rascal.l"
 
 #line 802 "tokenizer.cpp"
 
@@ -867,219 +867,219 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 33 "pascal.l"
+#line 33 "rascal.l"
 { }
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 34 "pascal.l"
+#line 34 "rascal.l"
 { }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 35 "pascal.l"
+#line 35 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return EQUAL; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 36 "pascal.l"
+#line 36 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return LTHAN; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 37 "pascal.l"
+#line 37 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return LEQU; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 38 "pascal.l"
+#line 38 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return GT; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 39 "pascal.l"
+#line 39 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return GE; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 40 "pascal.l"
+#line 40 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return UNEQUAL; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 41 "pascal.l"
+#line 41 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return PLUS; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 42 "pascal.l"
+#line 42 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return MINUS; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 43 "pascal.l"
+#line 43 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return MUL; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 44 "pascal.l"
+#line 44 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return DIV; }		
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 45 "pascal.l"
+#line 45 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return RIGHTP; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 46 "pascal.l"
+#line 46 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return LEFTP; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 47 "pascal.l"
+#line 47 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return ASSIGN; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 48 "pascal.l"
+#line 48 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return SEMI; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 49 "pascal.l"
+#line 49 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return COMMA; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 50 "pascal.l"
+#line 50 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return COLON; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 51 "pascal.l"
+#line 51 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return BEGINN; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 52 "pascal.l"
+#line 52 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return END; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 53 "pascal.l"
+#line 53 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return AND; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 54 "pascal.l"
+#line 54 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return OR; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 55 "pascal.l"
+#line 55 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return NOT; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 56 "pascal.l"
+#line 56 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return READ; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 57 "pascal.l"
+#line 57 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return IF; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 58 "pascal.l"
+#line 58 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return THEN; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 59 "pascal.l"
+#line 59 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return ELSE; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 60 "pascal.l"
+#line 60 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return WHILE; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 61 "pascal.l"
+#line 61 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return DO; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 62 "pascal.l"
+#line 62 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return PROGRAM; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 63 "pascal.l"
+#line 63 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return FUNCTION; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 64 "pascal.l"
+#line 64 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return PROCEDURE;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 65 "pascal.l"
+#line 65 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return VAR;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 66 "pascal.l"
+#line 66 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG  return INTEGER; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 67 "pascal.l"
+#line 67 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return DOT; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 68 "pascal.l"
+#line 68 "rascal.l"
 {BeginToken(yytext);YYLVAL_DEBUG return WRITE; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 69 "pascal.l"
+#line 69 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return SYS_BOOL; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 70 "pascal.l"
+#line 70 "rascal.l"
 { BeginToken(yytext);YYLVAL_DEBUG return SYS_FUNCT; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 71 "pascal.l"
+#line 71 "rascal.l"
 {BeginToken(yytext);YYLVAL_DEBUG return TYPE;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 72 "pascal.l"
+#line 72 "rascal.l"
 { BeginToken(yytext);yylval.debug = strdup(yytext);return IDD; }
 	YY_BREAK
 case 41:
 /* rule 41 can match eol */
 YY_RULE_SETUP
-#line 74 "pascal.l"
+#line 74 "rascal.l"
 {BeginToken(yytext);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 75 "pascal.l"
+#line 75 "rascal.l"
 { printf("Invalid character\n");} 
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 77 "pascal.l"
+#line 77 "rascal.l"
 ECHO;
 	YY_BREAK
 #line 1086 "tokenizer.cpp"
@@ -2099,6 +2099,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 77 "pascal.l"
+#line 77 "rascal.l"
 
 

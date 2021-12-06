@@ -314,7 +314,6 @@ class ProcCall : public Statement {
 
   virtual std::vector<Node*> getChildren() {
     std::vector<Node*> list;
-    list.push_back((Node*)id);
     for (auto i : *(argument_list)) list.push_back((Node*)i);
     return list;
   }

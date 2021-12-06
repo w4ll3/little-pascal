@@ -1,4 +1,4 @@
-NAME = pascal
+NAME = rascal
 
 CXXFLAGS = -std=c++11
 

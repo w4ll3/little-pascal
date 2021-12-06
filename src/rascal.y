@@ -233,13 +233,10 @@ proc_stmt :
                                                   new ast::Identifier($1), $3
                                                 );
                                           }
-  | READ  LEFTP name_list RIGHTP          { std::vector<ast::Expression*> params;
-                                            for (auto e: *($3)) {
-                                              params.push_back(new ast::Attr(e));
-                                            }
+  | READ  LEFTP expression_list RIGHTP    {
                                             $$ = new ast::Read(
                                                   new ast::Identifier($1),
-                                                  &params
+                                                  $3
                                                 );
                                           }
 

@@ -1,0 +1,54 @@
+/**
+ * Programa contendo laço de repetição e estrutura condicional aninhados;
+ *
+ * Programa contendo a definição e chamada de um procedimento ou função
+ * recursiva com passagem de ao menos um parâmetro.
+ *
+ * Programa contendo a definição e chamada de uma função com passagem de ao
+ * menos um parâmetro.
+ *
+ * Programa contendo a definição e chamada de um procedimento ou função
+ * recursiva com passagem de ao menos um parâmetro.
+ **/
+
+/**
+ * {desc} Programa que verifica valores primos entre duas entradas do usuário
+ **/
+
+program checkPrimeNumberInBetween;
+
+  var head, tail: integer;
+
+  function getRemainder(num: integer; divisor: integer): integer;
+  begin
+    getRemainder := (num - divisor * (num / divisor));
+  end;
+
+  function isPrime(num: integer; divisor: integer): boolean;
+  begin
+    // 0 - 1
+    if(num < 2) then
+      isPrime := false;
+    // 2
+    if(num = 2) then
+      isPrime := true;
+    // num % div
+    if(getRemainder(num, divisor) = 0) then
+      isPrime := false;
+    // div * div
+    if(divisor * divisor > num) then
+      isPrime := true;
+    isPrime := isPrime(num, divisor + 1);
+  end;
+
+begin
+  read(head, tail);
+  write(head, tail);
+  while(head <> tail) do
+  begin
+    if(isPrime(head, 2)) then
+      displayCalc(head);
+
+    start := head + 1;
+  end;
+end.
