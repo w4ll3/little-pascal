@@ -151,11 +151,6 @@ class Routine : public Program {
   virtual std::vector<std::string> CodeGen(CodeGenContext& context);
 };
 
-class Expression : public Node {
- public:
-  virtual std::vector<std::string> CodeGen(CodeGenContext& context){};
-};
-
 class Type : public Statement {
  public:
   enum class TypeName : int {
@@ -177,15 +172,25 @@ class Type : public Statement {
       throw std::logic_error("There is no such type dude.");
   }
 
-  Type(TypeName tpname) : sys_name(tpname) {
-    std::cout << "comment: used in const def" << std::endl;
-    init();
+  static std::string TypeString(TypeName type) {
+    if (type == TypeName::integer) {
+      return "integer";
+    } else {
+      return "boolean";
+    }
   }
+  Type(TypeName tpname) : sys_name(tpname) { init(); }
   Type(const std::string& str) : raw_name(str) { init(); }
   Type(const char* ptr_c) : raw_name(*(new std::string(ptr_c))) { init(); }
 
   virtual std::string toString() { return raw_name; }
   virtual std::vector<std::string> CodeGen(CodeGenContext& context);
+};
+
+class Expression : public Node {
+ public:
+  virtual std::vector<std::string> CodeGen(CodeGenContext& context){};
+  virtual Type::TypeName getType(){};
 };
 
 class Identifier : public Expression {
@@ -196,6 +201,7 @@ class Identifier : public Expression {
   Identifier(const char* ptr_s) : name(*(new std::string(ptr_s))) {}
   virtual std::string toString() { return name; }
   virtual std::vector<std::string> CodeGen(CodeGenContext& context);
+  virtual Type::TypeName getType(){};
 };
 
 class Attr : public Expression {
@@ -210,12 +216,10 @@ class Attr : public Expression {
 
 class Const : public Expression {
  public:
-  std::string address;
+  int address;
 
-  Const() : address(""){};
-  Const(const std::string& address) : address(address){};
-  Const(const char* ptr_s) : address(*(new std::string(ptr_s))) {}
-  virtual Type::TypeName getConstType() = 0;
+  Const() : address(-1){};
+  Const(int address) : address(address){};
 };
 
 class Var : public Statement {
@@ -244,7 +248,6 @@ class Integer : public Const {
   int val;
 
   Integer(int val) : val(val) {}
-  virtual Type::TypeName getConstType() { return Type::TypeName::integer; }
   virtual std::string toString() {
     return [=]() {
       std::stringstream oss;
@@ -252,6 +255,7 @@ class Integer : public Const {
       return oss.str();
     }();
   }
+  virtual Type::TypeName getType() { return Type::TypeName::integer; }
   virtual std::vector<std::string> CodeGen(CodeGenContext& context);
 };
 
@@ -261,7 +265,7 @@ class Param : public Const {
   Type* type;
 
   Param(const std::string& name, Type* type) : name(name), type(type) {}
-  virtual Type::TypeName getConstType() { return type->sys_name; }
+  virtual Type::TypeName getType() { return type->sys_name; }
   virtual std::string toString() { return "Param"; }
   virtual std::vector<std::string> CodeGen(CodeGenContext& context);
 };
@@ -270,7 +274,7 @@ class Boolean : public Const {
   int val;
 
   Boolean(const char* str) : val(std::string(str) == "true" ? 1 : 0) {}
-  virtual Type::TypeName getConstType() { return Type::TypeName::boolean; }
+  virtual Type::TypeName getType() { return Type::TypeName::boolean; }
   virtual std::string toString() {
     std::stringstream oss;
     oss << val;
@@ -366,14 +370,13 @@ class Operator : public Expression {
     return list;
   }
   virtual std::string toString() {
-    return "Binary op: " +
-           (std::map<OpType, std::string>){
-               {OpType::plus, "plus"},       {OpType::minus, "minus"},
-               {OpType::mul, "mul"},         {OpType::div, "div"},
-               {OpType::bit_and, "bit_and"}, {OpType::bit_or, "bit_or"},
-               {OpType::eq, "eq"},           {OpType::ne, "ne"},
-               {OpType::lt, "lt"},           {OpType::gt, "gt"},
-               {OpType::le, "le"},           {OpType::ge, "ge"}}[op];
+    return (std::map<OpType, std::string>){
+        {OpType::plus, "+"},      {OpType::minus, "-"},
+        {OpType::mul, "*"},       {OpType::div, "/ div"},
+        {OpType::bit_and, "and"}, {OpType::bit_or, "or"},
+        {OpType::eq, "=="},       {OpType::ne, "<>"},
+        {OpType::lt, "<"},        {OpType::gt, ">"},
+        {OpType::le, "<="},       {OpType::ge, ">="}}[op];
   }
   virtual std::vector<std::string> CodeGen(CodeGenContext& context);
 };

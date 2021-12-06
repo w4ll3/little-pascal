@@ -25,14 +25,15 @@ begin
   z := (1+2)*3 - 4/2;
   a := (a < b+c) or (b < a + c) and a = c;
   write(a, b);
-  p(a, b, c, 8);
-  while (i <= n) do  
+  p(a);
+  while (x <= 100) do  
   begin
     x := y + z;
-    z := i + 1;
+    z := x + 1;
   end;
   write(x * y);
   x := soma(5, 10);
+  p(a);
   //last
   b := true;
 end.

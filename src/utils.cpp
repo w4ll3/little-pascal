@@ -249,14 +249,19 @@ void green(const std::string& str) {
 }
 
 LookupEntry Lookup(CodeGenContext& context, std::string name) {
-  LookupTable::iterator match;
   LookupEntry entry;
   std::pair<LookupTable::iterator, LookupTable::iterator> el =
       context.lookup_table.equal_range(name);
   for (LookupTable::iterator it = el.first; it != el.second; it++) {
-    match = context.lookup_table.find(it->first);
-    if (match != context.lookup_table.end()) {
-      entry = match.operator*().second;
+    if (it != context.lookup_table.end()) {
+      if (it->second.scope > context.scope) {
+        continue;
+      }
+      entry = it->second;
+      green("Resolved entry: { id: " + name +
+            ", addr: " + std::to_string(entry.address) +
+            ", scope: " + std::to_string(entry.scope) +
+            ", type: " + entry.sys_type + ", sys: " + entry.type + " }");
     }
   }
   return entry;
@@ -271,7 +276,9 @@ void CodeGenContext::generateCode(ast::Program& root) {
   /* Print the bytecode in a human-readable format
      to see if our program compiled properly
    */
-  std::cout << "code is gen~~~\n";
-  for (auto ln : code) std::cout << ln << std::endl;
-  std::cout << "code is gen~!~\n";
+  if (!this->error) {
+    std::cout << "code is gen~~~\n";
+    for (auto ln : code) std::cout << ln << std::endl;
+    std::cout << "code is gen~!~\n";
+  }
 }
