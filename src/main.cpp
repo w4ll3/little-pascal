@@ -9,15 +9,16 @@
 using namespace std;
 
 extern int yyparse();
-extern ast::Program* ast_root;
+extern ast::Program *ast_root;
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
   init_buffer();
   yyparse();
   extern int parseError;
-  if (parseError) return 0;
-  green("syntax check success!");
-  cout << ast_root << endl;
+  if (parseError) {
+    return 0;
+  }
+  green("\nsyntax check success!");
   ast_root->print_node("", true, true);
   CodeGenContext context;
   try {
@@ -30,9 +31,9 @@ int main(int argc, char** argv) {
                   << std::endl;
       throw std::domain_error("Program failed due to the above errors.");
     }
-  } catch (const std::domain_error& de) {
+  } catch (const std::domain_error &de) {
     red(de.what());
-  } catch (const std::logic_error& le) {
+  } catch (const std::logic_error &le) {
     red(le.what());
   } catch (...) {
     cout << "other uncaught error" << endl;

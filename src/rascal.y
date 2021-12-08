@@ -214,8 +214,13 @@ stmt :
 ;
 
 assign_stmt : 
-  IDD ASSIGN expression                   { $$ = new ast::AssignmentStmt(
-                                                  new ast::Identifier($1), $3
+  IDD ASSIGN expression                   { auto context = *(new CodeGenContext);
+                                            context.ignore = true;
+                                            auto code = $3->CodeGen(context);
+                                            $$ = new ast::AssignmentStmt(
+                                                  new ast::Identifier($1,
+                                                      (code.back().find("CHPR") != std::string::npos) == 1
+                                                  ), $3
                                                 );
                                           }
 ;
@@ -225,7 +230,7 @@ proc_stmt :
                                                   new ast::Identifier($1)
                                                 );
                                           }
-  | IDD LEFTP expression_list RIGHTP    { $$ = new ast::ProcCall(
+  | IDD LEFTP expression_list RIGHTP      { $$ = new ast::ProcCall(
                                                   new ast::Identifier($1), $3
                                                 );
                                           }
@@ -241,8 +246,25 @@ proc_stmt :
                                           }
 
 if_stmt : 
-  IF expression THEN stmt else_clause     { $$ = (ast::Statement*)
-                                                      new ast::IfStmt($2,$4,$5);
+  IF expression THEN stmt else_clause     { auto context = *(new CodeGenContext);
+                                            context.ignore = true;
+                                            bool isFunc = false;
+                                            for (auto i : $2->CodeGen(context)) {
+                                              isFunc = (i.find("CHPR") != std::string::npos) == 1;
+                                              if(isFunc) break;
+                                            }
+                                            if($5 != nullptr && !isFunc) {
+                                              for (auto i : $5->CodeGen(context)) {
+                                                isFunc = (i.find("CHPR") != std::string::npos) == 1;
+                                                if(isFunc) break;
+                                              }
+                                            }
+                                            $$ = (ast::Statement*)
+                                                      new ast::IfStmt($2,
+                                                                $4,
+                                                                $5,
+                                                                isFunc
+                                                              );
                                           }
 ;
 

@@ -8,3 +8,7 @@ pascal.tab.h
 src/*.o
 src/parser.cpp
 src/parser.hpp
+src/tokenizer.*
+projeto_inicial
+mepa
+.vscode
